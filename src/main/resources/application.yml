@@ -3,8 +3,13 @@ spring:
   data:
     mongodb:
       authentication-database: admin
+      uri: mongodb://localhost:27017/demo
       username: admin
       password: admin
       database: demo
       port: 27017
       host: localhost
+
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
