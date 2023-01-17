@@ -2,6 +2,7 @@ package com.shakiroye.springbootmongodb.controller;
 
 import com.shakiroye.springbootmongodb.collection.Person;
 import com.shakiroye.springbootmongodb.service.PersonService;
+import org.bson.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -49,5 +50,15 @@ public class PersonController {
             ){
         Pageable pageable = PageRequest.of(page, size);
         return personService.search(name,minAge, maxAge, city, pageable);
+    }
+
+    @GetMapping("/oldestPerson")
+    public List<Document> getOldestPerson(){
+        return personService.getOldestPersonByCity();
+    }
+
+    @GetMapping("populationByCity")
+    public List<Document> getPopulationByCity(){
+        return personService.getPopulationByCity();
     }
 }
